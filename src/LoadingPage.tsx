@@ -5,16 +5,17 @@ import Lightning from './animations/Lightning'
 
 const LoadingPage = () => {
   return (
-    <div className='w-full h-screen relative'>
-    <Lightning
-      hue={220}
-      xOffset={0}
-      speed={1}
-      intensity={1}
-      size={1}
-    />
-  </div>
-  )
+    <div className="w-full h-screen relative">
+      <CountUp
+        from={0}
+        to={100}
+        separator=","
+        direction="up"
+        duration={1}
+        className="count-up-text"
+      />
+    </div>
+  );
 }
 
 export default LoadingPage

@@ -39,7 +39,21 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --keyframes-gradient {
+      "0%, 100%": {
+        background-position: "0% 50%";
+      }
+  
+      "50%": {
+        background-position: "100% 50%";
+      }
+    }
+  
+    /* Animation definition */
+    --animation-gradient: "gradient 8s linear infinite";
+    
 }
+
 
 :root {
   --radius: 0.625rem;
@@ -116,5 +130,61 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(169deg, #3a0b6a 11%, #000000 85%);
+  background-size: 400% 400%;
+
+  animation: gradient 4s ease-in infinite;
+}
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-star-movement-bottom {
+    animation: star-movement-bottom linear infinite alternate;
+  }
+
+  .animate-star-movement-top {
+    animation: star-movement-top linear infinite alternate;
   }
 }
