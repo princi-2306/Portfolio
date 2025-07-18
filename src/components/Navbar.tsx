@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
-import {motion, AnimatePresence} from "framer-motion"
-import {FiGithub, FiTwitter, FiLinkedin, FiMenu, FiX} from "react-icons/fi"
-import { a } from 'node_modules/framer-motion/dist/types.d-D0HXPxHm';
+import { useState } from 'react'
+import {motion} from "framer-motion"
+import {FiGithub, FiLinkedin, FiMenu, FiX} from "react-icons/fi"
+
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
-  const [contactForm, setContactForm] = useState(false);
-  const openContactForm = () => setContactForm(true);
-  const closeContactForm = () => setContactForm(false);
+  // const [contactForm, setContactForm] = useState(false);
+  // const openContactForm = () => setContactForm(true);
+  // const closeContactForm = () => setContactForm(false);
+
   return (
     <header className='fixed w-full z-50 transition-all duration-300 backdrop-blur-lg'>
-      <div className='mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20'>
+      <div className='mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-6 pt-8 md:pt-0 md:h-20'>
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -41,7 +43,7 @@ const Navbar = () => {
             delay : 0.7 + index * 0.2,
           }}
           className='relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400 front-medium transition-colors duration-300 group'
-          href="#">
+          href={`#${items.toLowerCase()}`}>
             {items}
             <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-violet-500 group-hover:w-full transition-all duration-300 '></span>
             </motion.a>
@@ -52,23 +54,22 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0.2 }}
             animate={{ opacity: 1, scale: 1 }}
             transition ={{delay: 1.3, duration : 0.8}}
-            href="#" className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'>
+            href="https://github.com/princi-2306" 
+            target='_blank' 
+            className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'
+          >
               <FiGithub className='w-5 h-5'/>
           </motion.a>
           <motion.a
             initial={{ opacity: 0, scale: 0.2 }}
             animate={{ opacity: 1, scale: 1 }}
             transition ={{delay: 1.3, duration : 0.8}}
-            href="#" className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'>
-              <FiTwitter className='w-5 h-5'/>
-            </motion.a>
-            <motion.a
-            initial={{ opacity: 0, scale: 0.2 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition ={{delay: 1.3, duration : 0.8}}
-            href="#" className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'>
+            href="https://www.linkedin.com/in/priyanshi-maurya-87141a2a4/"
+            target='_blank' 
+            className='text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300'
+          >
               <FiLinkedin className='w-5 h-5'/>
-            </motion.a>
+          </motion.a>
         </div>
         
         {/* mobile menu */}
@@ -93,7 +94,6 @@ const Navbar = () => {
         className='md:hidden overflow-hidden bg-white dark:bg-gray-900 shadow-lg px-4 py-5 space-y-5'>
           <nav className='flex flex-col space-y-3'>
           {["Home", "About", "Projects", "Contacts"].map((item) => (
-             
             <a key={item} onClick={toggleMenu} className='text-gray-300 fomt-medium py-2' href="#">
               {item}
             </a>
@@ -102,28 +102,21 @@ const Navbar = () => {
         </nav>
         <div className='pt-4 border-t border-gray-200 dark:border=gray-700'>
           <div className='flex space-x-5'>
-            <a href="#">
+            <a href="https://github.com/princi-2306" target='_blank'>
               <FiGithub className='h-5 w-5 text-gray-300'/>
             </a>
-            <a href="#">
-              <FiTwitter className='h-5 w-5 text-gray-300'/>
-            </a>
-            <a href="#">
+            <a href="https://www.linkedin.com/in/priyanshi-maurya-87141a2a4/" target='_blank'>
               <FiLinkedin className='h-5 w-5 text-gray-300'/>
             </a>
           </div>
         </div>
-        <button onClick={() => {
+        {/* <button onClick={() => {
           toggleMenu()
           openContactForm()
         }} className='mt-4 block w-full px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-400 font-bold'>
           Contact Me
-        </button>
+        </button> */}
       </motion.div>
-      {/* contact form */}
-      {/* {openContactForm && (<div onClick={} className='fixed inest-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-centerp-4'>
-        
-      </div>)} */}
       </header>
   )
 }
