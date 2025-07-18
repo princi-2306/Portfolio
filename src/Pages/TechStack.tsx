@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import ChromaGrid from "./animations/ChromaGrid";
-import CircularGallery from "./animations/CircularGallery";
+import CircularGallery from "../animations/CircularGallery";
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
