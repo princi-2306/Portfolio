@@ -45,31 +45,35 @@ const projectsData: ProjectItem[] = [
   {
     id: 1,
     title: "Bento Teachers Hub",
-    description: "is a sleek and interactive web application built with JavaScript, inspired by the minimalistic Bento design style.",
+    description:
+      "is a sleek and interactive web application built with JavaScript, inspired by the minimalistic Bento design style.",
     image: img2,
-    link: "https://github.com/princi-2306/Bento"
+    link: "https://github.com/princi-2306/Bento",
   },
   {
     id: 2,
     title: "Book.com",
-    description: "is a React-based web application designed to help users discover the latest books across various genres, including Fiction, Non-Fiction, Sci-Fi, Romance, Mystery, and more.",
+    description:
+      "is a React-based web application designed to help users discover the latest books across various genres, including Fiction, Non-Fiction, Sci-Fi, Romance, Mystery, and more.",
     image: img,
-    link: "https://github.com/princi-2306/Book-Reviews"
+    link: "https://github.com/princi-2306/Book-Reviews",
   },
   {
     id: 3,
     title: "BlogStar",
-    description: "a blogging website to read latest blogs, create, edit and store your own blogs using ReactJs and Zustand for state management.",
+    description:
+      "a blogging website to read latest blogs, create, edit and store your own blogs using ReactJs and Zustand for state management.",
     image: img1,
-    link: "https://github.com/princi-2306/Blog-App"
+    link: "https://github.com/princi-2306/Blog-App",
   },
   {
     id: 4,
     title: "Chat-App",
-    description: "A chat website for live chatting using web-sockets.",
+    description:
+      "A chat website for live chatting using web-sockets.The app supports 1:1 and group chats, message history, and typing indicators, providing a seamless user experience.",
     image: img3,
-    link: "https://github.com/princi-2306/ChatApp"
-  }
+    link: "https://github.com/princi-2306/ChatApp",
+  },
 ];
 
 const certificatesData: CertificateItem[] = [
@@ -98,7 +102,7 @@ const certificatesData: CertificateItem[] = [
 // Reusable Card Component
 const ProjectCard: React.FC<ProjectCardProps> = ({ item, isProject }) => (
   <SpotlightCard
-    className="custom-spotlight-card w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl 2xl:w-120 h-auto min-h-80 lg:min-h-90 p-4 sm:p-6"
+    className="custom-spotlight-card w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl 2xl:w-120 h-auto min-h-60 lg:min-h-90 p-4 sm:p-6"
     spotlightColor="rgba(0, 229, 255, 0.2)"
   >
     <a href={item.link} className="block h-full">
@@ -106,7 +110,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ item, isProject }) => (
         <img 
           src={item.image} 
           alt={(item as ProjectItem).title || "Certificate"} 
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full cover center hover:scale-105 transition-transform duration-300"
         />
       </div>
       {isProject && (
@@ -146,63 +150,60 @@ const Skills = () => {
   const tabsContainerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Set initial state to visible for elements
-      gsap.set([tabsContainerRef.current, gridRef.current?.children], {
+      // Animate tabs container
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    // Set initial hidden state
+    gsap.set([tabsContainerRef.current, gridRef.current], {
+      opacity: 0,
+      y: 30
+    });
+
+    // Animate tabs container
+    gsap.to(tabsContainerRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: tabsContainerRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    // Animate grid items
+    if (gridRef.current) {
+      gsap.to(gridRef.current, {
         opacity: 1,
-        y: 0
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "restart none none reverse",
+        },
       });
 
-      // Animate the entire tabs container
-      gsap.fromTo(tabsContainerRef.current, 
-        {
-          y: 30,
-          // opacity: 0
+      gsap.from(gridRef.current.children, {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "restart none none reverse",
         },
-        {
-          scrollTrigger: {
-            trigger: tabsContainerRef.current,
-            start: "top 85%",
-            end: "bottom 15%",
-            toggleActions: "play none none reverse",
-            refreshPriority: 0,
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-        }
-      );
+      });
+    }
+  }, containerRef);
 
-      // Animate grid items
-      if (gridRef.current?.children && gridRef.current.children.length > 0) {
-        gsap.fromTo(gridRef.current.children,
-          {
-            y: 50,
-            // opacity: 0
-          },
-          {
-            scrollTrigger: {
-              trigger: gridRef.current,
-              start: "top 85%",
-              end: "bottom 15%",
-              toggleActions: "play none none reverse",
-              refreshPriority: 1,
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: "power2.out",
-            delay: 0.3,
-          }
-        );
-      }
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  return () => ctx.revert();
+}, []);
 
   // Tab switch animation - separate effect for tab switching
   useEffect(() => {
@@ -213,16 +214,16 @@ const Skills = () => {
       // Animate the tab switch
       gsap.fromTo(gridRef.current.children,
         {
-          y: 20,
+          x: 50,
           opacity: 0,
           scale: 0.95
         },
         {
-          y: 0,
+          x: 0,
           opacity: 1,
           scale: 1,
           duration: 0.5,
-          stagger: 0.08,
+         
           ease: "power2.out",
           delay: 0.1
         }
@@ -261,7 +262,7 @@ const Skills = () => {
 
       {/* Cards Grid */}
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8"
+        className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-4 sm:gap-6  lg:gap-8 xl:gap-10 w-full max-w-6xl px-4 sm:px-6 lg:px-8"
         ref={gridRef}
       >
         {currentData.map((item) => (

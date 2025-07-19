@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 import Navbar from "../components/Navbar";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { motion } from "framer-motion";
@@ -12,7 +12,7 @@ import { MdMailOutline } from "react-icons/md";
 const LandingPage = () => {
   const button1Ref = useRef<HTMLDivElement>(null);
   const button2Ref = useRef<HTMLDivElement>(null);
-  const [isHovering, setIsHovering] = useState(false);
+  // const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     // GSAP animation for buttons
@@ -30,7 +30,7 @@ const LandingPage = () => {
         y: 0,
         duration: 0.5,
       },
-      1.8
+      5
     ).to(
       button2Ref.current,
       {
@@ -38,7 +38,7 @@ const LandingPage = () => {
         y: 0,
         duration: 0.5,
       },
-      2.1
+      5
     );
 
     // Cleanup
@@ -67,16 +67,16 @@ const LandingPage = () => {
     }
   };
 
-  const lottieOptions = {
-    src: "g57yy07orS.lottie",
-    loop: true,
-    autoplay: true,
-    style: { width: "100%", height: "100%" },
-    className: `w-full h-full transition-all duration-500 ${isHovering
-        ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[175%] rotate-2"
-        : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[200%]"
-      }`,
-  };
+  // const lottieOptions = {
+  //   src: "g57yy07orS.lottie",
+  //   loop: true,
+  //   autoplay: true,
+  //   style: { width: "100%", height: "100%" },
+  //   className: `w-full h-full transition-all duration-500 ${isHovering
+  //       ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[175%] rotate-2"
+  //       : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[200%]"
+  //     }`,
+  // };
 
   return (
     <div id="home" className="relative min-h-screen w-full overflow-hidden">
@@ -107,7 +107,7 @@ const LandingPage = () => {
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 2, duration: 0.8 }}
+              transition={{ delay: 5, duration: 3 }}
               className="mb-6"
             >
               <div className="text-center lg:text-left">
@@ -133,7 +133,7 @@ const LandingPage = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 2 }}
+              transition={{ delay: 5 }}
               className="space-y-4 mb-8"
             >
               <div className="text-center lg:text-left">
@@ -190,19 +190,17 @@ const LandingPage = () => {
           {/* Right Content - Lottie Animation */}
           <div
             className="w-full py-[10%] sm:py-0 lg:w-1/2 h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-8 lg:mt-0"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
             data-aos="fade-left"
             data-aos-delay="600"
           >
-            <div className="relative w-full opacity-90">
+            {/* <div className="relative w-full opacity-90">
               <div
                 className={`absolute inset-0 bg-gradient-to-r from-[#6366f1]/10 to-[#a855f7]/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${isHovering ? "opacity-50 scale-105" : "opacity-20 scale-100"
                   }`}
               ></div>
 
               <div
-                className={`relative z-10 w-full opacity-90 transform transition-transform duration-500 ${isHovering ? "scale-105" : "scale-100"
+                className={`relative z-10 w-full h-150 opacity-90 transform transition-transform duration-500 ${isHovering ? "scale-105" : "scale-100"
                   }`}
               >
                 <DotLottieReact {...lottieOptions} />
@@ -217,7 +215,21 @@ const LandingPage = () => {
                     }`}
                 ></div>
               </div>
-            </div>
+            </div> */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 5 }}
+              className="lg:h-150 w-200 "
+            >
+              <DotLottieReact
+                src="https://lottie.host/288c4f1c-00d1-4f83-84a5-e80d3754bee5/g57yy07orS.lottie"
+                loop
+                autoplay
+                className="scale-150  lg:translate-y-30"
+              />
+            </motion.div>
           </div>
         </div>
       </div>

@@ -42,31 +42,31 @@ const AboutMe = () => {
       tl.from(imageRef.current, {
         x: -100,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
         ease: "power3.out",
       })
         .from(headingRef.current, {
           y: 30,
           opacity: 0,
-          duration: 0.8,
+          duration: 0.5,
           ease: "power2.out",
         })
         .from(paragraphRef.current, {
           y: 30,
           opacity: 0,
-          duration: 0.8,
+          duration: 0.5,
           ease: "power2.out",
         })
         .from(buttonsRef.current, {
           y: 20,
           opacity: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         })
         .from(iconsRef.current, {
           y: 20,
           opacity: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         });
     });
@@ -75,9 +75,9 @@ const AboutMe = () => {
   }, []);
 
   return (
-    <div 
-      id="about" 
-      className="flex flex-col items-center gap-12 min-h-screen w-full px-6 sm:px-12 md:px-20 overflow-hidden py-12"
+    <div
+      id="about"
+      className="flex flex-col items-center gap-12 min-h-screen w-full px-6 sm:px-15 md:px-20 overflow-hidden py-12"
     >
       {/* Title */}
       <div ref={titleRef}>
@@ -90,35 +90,39 @@ const AboutMe = () => {
           <div>About Me</div>
         </GradientText>
       </div>
-
+      
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row justify-between items-center gap-10 w-full">
+      <div className="flex flex-col lg:flex-row lg:gap-30 gap-9 items-center  w-full">
         {/* Image Card */}
-        <div ref={imageRef} className="md:ml-64 md:mb-56 flex justify-center lg:justify-start w-full lg:w-auto">
+        <div
+          ref={imageRef}
+          className="md:ml-64 md:mb-56 flex justify-center lg:justify-start w-full lg:w-auto"
+        >
           <TiltedCard
             imageSrc={img}
             altText="Priyanshi Maurya"
             captionText="Priyanshi - Developer"
-            containerHeight="280px"
-            containerWidth="280px"
-            imageHeight="280px"
-            imageWidth="280px"
+            containerHeight="290px"
+            containerWidth="290px"
+            imageHeight="290px"
+            imageWidth="290px"
             rotateAmplitude={12}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
             displayOverlayContent={true}
             overlayContent={
-              <p className="tilted-card-demo-text mx-16">Priyanshi - Developer</p>
+              <p className="tilted-card-demo-text mx-16">
+                Priyanshi - Developer
+              </p>
             }
           />
         </div>
 
-
         {/* Text Content */}
         <div
           ref={contentRef}
-          className="flex flex-col items-start gap-6 max-w-xl"
+          className="flex flex-col justify-center  gap-6 max-w-xl sm:w-full "
         >
           <div
             ref={headingRef}
@@ -128,9 +132,9 @@ const AboutMe = () => {
           </div>
           <div
             ref={paragraphRef}
-            className="text-gray-200 text-justify leading-relaxed text-base sm:text-lg cursor-default"
+            className="text-gray-200 text-justify leading-relaxed text-base sm:text-lg cursor-default sm:px-5"
           >
-            A passionate frontend developer and computer science student who
+            A frontend developer and computer science student who
             loves transforming creative ideas into interactive, visually
             appealing websites. Proficient in React.js, JavaScript, and Tailwind
             CSS, I enjoy crafting seamless user experiences with modern tech
@@ -142,27 +146,24 @@ const AboutMe = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-4 pt-4" ref={buttonsRef}>
-              <a
-                href="https://docs.google.com/document/d/19zVGS-rc8easwfAOApXZE5PKu2k8ihQSt8FtOzGopSA/edit?tab=t.0"
-                target="_blank"
-              >
-            <StarBorder>
-                View Resume
-            </StarBorder>
-              </a>
-              <a
-                href="#projects"
-              >
-            <StarBorder>
-                View Projects
-            </StarBorder>
-              </a>
+          <div className="flex flex-wrap gap-4 w-full " ref={buttonsRef}>
+            <a
+              href="https://docs.google.com/document/d/19zVGS-rc8easwfAOApXZE5PKu2k8ihQSt8FtOzGopSA/edit?tab=t.0"
+              target="_blank"
+            >
+              <StarBorder>View Resume</StarBorder>
+            </a>
+            <a href="#projects">
+              <StarBorder>View Projects</StarBorder>
+            </a>
           </div>
 
           {/* Social Icons */}
-          <div ref={iconsRef} className="md:w-72 w-32">
-            <GlassIcons items={items} className="custom-class" />
+          <div ref={iconsRef} className="md:auto w-full lg:w-32 ">
+            <GlassIcons
+              items={items}
+              className="custom-class w-full sm:justify-start sm:max-w-[280px] lg:max-w-none sm:py-6"
+            />
           </div>
         </div>
       </div>

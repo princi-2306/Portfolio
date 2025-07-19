@@ -401,16 +401,24 @@ class Media {
         ];
       }
     }
-    this.scale = this.screen.height / 1500;
+
+     // Adjust scale based on screen width
+    const isMobile = this.screen.width < 768; // 768px breakpoint
+    this.scale = isMobile 
+      ? this.screen.height / 2000  // Smaller scale for mobile
+      : this.screen.height / 1500; // Original scale for desktop
+
     this.plane.scale.y =
       (this.viewport.height * (500 * this.scale)) / this.screen.height;
     this.plane.scale.x =
       (this.viewport.width * (500 * this.scale)) / this.screen.width;
+    
     this.plane.program.uniforms.uPlaneSizes.value = [
       this.plane.scale.x,
       this.plane.scale.y,
     ];
-    this.padding = 2;
+    
+    this.padding = isMobile ? 1.5 : 2; // Smaller padding on mobile
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
