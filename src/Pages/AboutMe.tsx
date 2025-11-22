@@ -148,7 +148,7 @@ const AboutMe = () => {
           {/* Buttons */}
           <div className="flex flex-wrap gap-4 w-full " ref={buttonsRef}>
             <a
-              href="https://docs.google.com/document/d/17ZVLl7NC_yEKjo-ooYwgXJGCDmnsgFLQeEGuau2K3mQ/edit?usp=sharing"
+              href="https://docs.google.com/document/d/1rH-OkjrGEJ7Gzaj3FDDSUVIbvquNubykTnPNe0ahveM/edit?usp=sharing"
               target="_blank"
             >
               <StarBorder>View Resume</StarBorder>
