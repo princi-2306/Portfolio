@@ -3,10 +3,10 @@ import { Modal, IconButton, Box, Backdrop } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import FullscreenIcon from '@mui/icons-material/Fullscreen'
 import SpotlightCard from '../animations/SpotlightCard'
-import img from '../assets/s1.png'
+import img from '../assets/legalAid.png'
 import img1 from '../assets/s2.png'
-import img2 from '../assets/Screenshot 2025-07-11 010316.png'
-import img3 from '../assets/Screenshot 2025-07-11 011055.png'
+import img2 from '../assets/image.png'
+import img3 from '../assets/chatApp.png'
 import GradientText from '../animations/GradientText'
 import img4 from '../assets/certificate (1).png'
 import img5 from '../assets/download.png'
@@ -48,35 +48,35 @@ interface TabButtonProps {
 const projectsData: ProjectItem[] = [
   {
     id: 1,
-    title: "Bento Teachers Hub",
+    title: "Quizzii",
     description:
-      "is a sleek and interactive web application built with JavaScript, inspired by the minimalistic Bento design style.",
+      "is an AI Quiz Generator, that takes in various inputs like pdf, text and link to generate quiz which is dowloadable and can be re-attempted.",
     image: img2,
-    link: "https://github.com/princi-2306/Bento",
+    link: "https://quizapp-1-ebrn.onrender.com/",
   },
   {
     id: 2,
-    title: "Book.com",
-    description:
-      "is a React-based web application designed to help users discover the latest books across various genres, including Fiction, Non-Fiction, Sci-Fi, Romance, Mystery, and more.",
-    image: img,
-    link: "https://github.com/princi-2306/Book-Reviews",
-  },
-  {
-    id: 3,
-    title: "BlogStar",
-    description:
-      "a blogging website to read latest blogs, create, edit and store your own blogs using ReactJs and Zustand for state management.",
-    image: img1,
-    link: "https://github.com/princi-2306/Blog-App",
-  },
-  {
-    id: 4,
     title: "Chat-App",
     description:
       "A chat website for live chatting using web-sockets.The app supports 1:1 and group chats, message history, and typing indicators, providing a seamless user experience.",
     image: img3,
     link: "https://github.com/princi-2306/ChatApp",
+  },
+  {
+    id: 3,
+    title: "LegalAid",
+    description:
+      "a legal aid provider, which handles all legal documents ans suggests laywers, consultants and supervisors to talk to for any legal disputes.",
+    image: img,
+    link: "https://github.com/THUNDERBLD/LexIQ",
+  },
+  {
+    id: 4,
+    title: "BlogStar",
+    description:
+      "a blogging website to read latest blogs, create, edit and store your own blogs using ReactJs and Zustand for state management.",
+    image: img1,
+    link: "https://github.com/princi-2306/Blog-App",
   },
 ];
 
