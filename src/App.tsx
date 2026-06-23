@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+/** @jsxRuntime classic */
+import React, { useEffect, useRef } from 'react'
 import { ThemeProvider } from "@/components/theme-provider"
 import LoadingPage from './Pages/LoadingPage'
 import gsap from 'gsap'
@@ -12,13 +13,29 @@ import TechStack from './Pages/TechStack'
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const App = () => {
+const App: React.FC = () => {
   const content = useRef<HTMLDivElement>(null);
   const preLoader = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const techStackRef = useRef<HTMLDivElement>(null);
+
+   useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://dev.d3s1r18lzk2w.amplifyapp.com/embed/cardtree-widget.js';
+    script.async = true;
+    script.dataset.cardtreeWidget = '';
+    script.dataset.slug = 'priyanshi23';
+    script.dataset.mode = 'bubble';
+    script.dataset.position = 'bottom-right';
+    script.dataset.bubbleStyle = 'rectangle';
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   
   useEffect(() => {
     // Initially hide the content
