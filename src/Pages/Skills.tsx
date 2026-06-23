@@ -231,7 +231,7 @@
 
 // export default Skills;
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 import GradientText from "../animations/GradientText";
 import PixelTransition from "../animations/PixelTransition";
 import img from "../assets/legalAid.png";
